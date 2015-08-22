@@ -3,12 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name=viewport content="width=device-width, initial-scale=1">
-		<meta name="description" content="Code and Create" />
-		<title>Android lollipop animations in CSS</title>
+		<meta name="description" content="Android lollipop animations recreated in CSS" />
+		<title>lollipop.css - Android lollipop animations in CSS</title>
 
-		<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
-		<!-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
-		<!-- <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,900' rel='stylesheet' type='text/css'> -->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
 		<style>
 			*, *:after, *:before {
@@ -42,9 +39,21 @@
 				bottom: 0;
 				left: 0;
 				width: 400px;
-				text-align: center;
 				background: white;
+				text-align: center;
+				overflow: hidden;
 				box-shadow: 2px 0 40px 2px rgba(0,0,0,0.1);
+			}
+			.sidebar:after {
+				content: '';
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background: url('data:image/svg+xml;utf8,<svg fill="#f4f4f4" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M5 16c0 3.87 3.13 7 7 7s7-3.13 7-7v-4H5v4zM16.12 4.37l2.1-2.1-.82-.83-2.3 2.31C14.16 3.28 13.12 3 12 3s-2.16.28-3.09.75L6.6 1.44l-.82.83 2.1 2.1C6.14 5.64 5 7.68 5 10v1h14v-1c0-2.32-1.14-4.36-2.88-5.63zM9 9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>') no-repeat;
+				background-size: 34em;
+				transform: rotate(10deg);
+				z-index: -3;
 			}
 			.outer-wrap {
 				padding: 32px;
@@ -100,13 +109,28 @@
 				transform: translateX(-200px);
 				pointer-event: none;
 			}
-
-			.share-box a {
-				margin-left: 10px;
-			}
 			.share-box {
-				margin: 32px 0;
+				margin-bottom: 32px;
 			}
+			.tweet-btn {
+				display: inline-block;
+				background: #55ACEE;
+				color: white;
+				fill: white;
+				border-radius: 5px;
+				padding: 5px 10px;
+				transition: 0.25s ease;
+				box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+			}
+			.tweet-btn:hover {
+				padding: 5px 20px;
+				background: white;
+			}
+			.tweet-btn:hover svg {
+				color: #55ACEE;
+				fill: #55ACEE;
+			}
+
 			.lollipop-icon {
 				display: inline-block;
 				position: relative;
@@ -209,10 +233,10 @@
 
 			}
 			@-webkit-keyframes fadeIn {
-				from { opacity: 0; transform: scale(0.7); }
+				from { opacity: 0; transform: scale(0.8); }
 				to { opacity: 1; transform: scale(1); }
 			}
-			@media (max-width: 1000px) {
+			@media (max-width: 950px) {
 				.sidebar {
 					position: relative;
 					width: auto;
@@ -222,7 +246,7 @@
 				.lollipop-icon {
 					margin: 1em 0;
 				}
-				.share-box { margin: 0; }
+				.share-box { margin-bottom: 16px; }
 				.sidebar__footer { position: static; padding: 16px; }
 				.outer-wrap {
 					margin-left: 0;
@@ -237,17 +261,18 @@
 	<body>
 		<div class="sidebar">
 			<div class="lollipop-icon">lollipop.css</div>
-			<h1 class="caps">Android lollipop animations <br>recreated in CSS</h1>
+			<h1 class="caps" style="padding:0 16px;">Android lollipop animations <br>recreated in CSS</h1>
 
 
 			<footer class="sidebar__footer">
 				<div class="share-box">
-					<span class="fa-stack fa-lg">
-						<i class="fa fa-circle fa-stack-2x" style="color:#55ACEE"></i>
-						<i class="fa fa-twitter fa-stack-1x  fa-inverse"></i>
-					</span>
+					<a class="tweet-btn" target="_blank" href="https://twitter.com/share?url=https%3A%2F%2Fkushagragour.in/lab/lollipopcss%2F&text=lollipop.css%20-%20Android%20lollipop%20animations%20in%20CSS%20via%20@chinchang457">
+						<svg style="width:24px;height:24px" viewBox="0 0 24 24">
+	                    <path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" />
+	                    </svg>
+                	</a>
 				</div>
-				Created by <a href="https://twitter.com/chinchang457/">Kushagra Gour</a>
+				Created by <a target="blank" href="https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fdev.twitter.com%2Fweb%2Ffollow-button&screen_name=chinchang457&tw_p=followbutton">Kushagra Gour</a>
 			</footer>
 
 		</div>
@@ -262,12 +287,8 @@
 					<div class="list-item__title">Dialpad</div>
 					<span class="list-item__date">5 Dec 2015</span>
 				</a>
-				<a class="list-item" onclick="ui.openItem(event)" href="chinchang/pen/yNyaEx/">
-					<div class="list-item__title">Screen change</div>
-					<span class="list-item__date">2 Aug 2015</span>
-				</a>
 				<div class="list-item">
-					coming soon
+					More coming soon
 				</div>
 			</div>
 
@@ -277,8 +298,6 @@
 			</div>
 
 			<p id="js-embed-pen" data-dummy-pen data-height="700" data-theme-id="0" data-slug-hash="yNyaEx" data-default-tab="result" data-user="chinchang">See the Pen <a href='http://codepen.io/chinchang/pen/yNyaEx/'>yNyaEx</a> by Kushagra Gour (<a href='http://codepen.io/chinchang'>@chinchang</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-
-
 		</div>
 
 		<div class="drawer">
