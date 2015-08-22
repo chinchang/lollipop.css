@@ -6,14 +6,15 @@
 		<meta name="description" content="Code and Create" />
 		<title>Android lollipop animations in CSS</title>
 
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
 		<!-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
 		<!-- <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,900' rel='stylesheet' type='text/css'> -->
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+		<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'> -->
 		<style>
 			*, *:after, *:before {
 				box-sizing: border-box;
 			}
+			html, body { height: 100%; }
 			body {
 				color: #555;
 				font-family: 'open sans', sans-serif;
@@ -29,7 +30,7 @@
 				text-decoration: none;
 			}
 			a:hover {
-				text-decoration: underline;
+				/*text-decoration: underline;*/
 				color: #F47322;
 			}
 			.icon-btn {
@@ -48,6 +49,8 @@
 			.outer-wrap {
 				padding: 32px;
 				margin-left: 400px;
+				position: relative;
+				min-height: 100%;
 				transition: 0.25s ease 0.1s;
 			}
 			header {
@@ -111,7 +114,7 @@
 				height: 6em;
 				line-height: 6em;
 				font-size: 3em;
-				box-shadow: 0 6px 20px 7px rgba(0, 0, 0, 0.1);
+				box-shadow: 0 13px 24px -7px rgba(0, 0, 0, 0.3);
 			}
 			.lollipop-icon:after {
 				content: '';
@@ -137,29 +140,52 @@
 				background: linear-gradient(to left bottom, #dadada 0px, #dadada 25px, transparent 25px);
 				z-index: -1;
 			}
-			.item {
+			.item-list {
+				transition: 0.3s ease;
+			}
+			.list-item {
+				display: block;
 				text-transform: uppercase;
+				text-decoration: none;
 				padding: 32px;
 				border: 1px solid #4794AB;
 				margin-bottom: 32px;
 				color: white;
-				transition: 0.2s ease 80ms;
+				letter-spacing: 2px;
+				transition: 0.25s ease 80ms;
 			}
-			.item__title {
+			.list-item__title {
 				font-size: 1.4em;
 				font-weight: 100;
 			}
-			.item__date {
+			.list-item__date {
 				color: inherit;
 				opacity: 0.5;
 				font-size: 0.7em;
 			}
-			.item:hover {
+			.list-item:hover {
 				background: rgba(0,0,0,0.1);
 				border-color: transparent;
 				color: white;
-				transform: scale(1.3) translate(100px, 0);
+				letter-spacing: 4px;
+				/*transform: scale(1.3) translate(100px, 0);*/
 			}
+			.item-container {
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				padding: 32px;
+				background: #40869A;
+				transform: translateX(100%);
+				transition: 0.35s ease 0.1s;
+			}
+			.item-state .item-container {
+				transform: translateX(0);
+				visibility: visible;
+			}
+			[data-dummy-pen] { display: none; }
 		</style>
 
 	</head>
@@ -167,7 +193,7 @@
 	<body>
 		<div class="sidebar">
 			<div class="lollipop-icon" style="margin:1em 0 2em;">lollipop.css</div>
-			<h1 class="caps">Android lollipop animations <br>done in CSS</h1>
+			<h1 class="caps">Android lollipop animations <br>recreated in CSS</h1>
 
 
 			<footer class="sidebar__footer">
@@ -183,23 +209,31 @@
 		</div>
 		<div class="outer-wrap">
 
-			<div class="item">
-				<div class="item__title">Main menu</div>
-				<span class="item__date">25 July 2015</span>
-			</div><div class="item">
-				<div class="item__title">Dialpad</div>
-				<span class="item__date">5 Dec 2015</span>
-			</div><div class="item">
-				<div class="item__title">Screen change</div>
-				<span class="item__date">2 Aug 2015</span>
-			</div><div class="item">
-				coming soon
+			<div class="item-list">
+				<a class="list-item" onclick="ui.openItem(event)" href="chinchang/pen/yNyaEx/">
+					<div class="list-item__title">Main menu</div>
+					<span class="list-item__date">25 July 2015</span>
+				</a>
+				<a class="list-item" onclick="ui.openItem(event)" href="chinchang/pen/yNyaEx/">
+					<div class="list-item__title">Dialpad</div>
+					<span class="list-item__date">5 Dec 2015</span>
+				</a>
+				<a class="list-item" onclick="ui.openItem(event)" href="chinchang/pen/yNyaEx/">
+					<div class="list-item__title">Screen change</div>
+					<span class="list-item__date">2 Aug 2015</span>
+				</a>
+				<div class="list-item">
+					coming soon
+				</div>
+			</div>
+
+			<div class="item-container" id="js-item-container" onclck="ui.closeItem()">
+
 			</div>
 
 
 
-			<!-- <p data-height="700" data-theme-id="0" data-slug-hash="yNyaEx" data-default-tab="result" data-user="chinchang" class='codepen'>See the Pen <a href='http://codepen.io/chinchang/pen/yNyaEx/'>yNyaEx</a> by Kushagra Gour (<a href='http://codepen.io/chinchang'>@chinchang</a>) on <a href='http://codepen.io'>CodePen</a>.</p> -->
-			<!-- <script async src="//assets.codepen.io/assets/embed/ei.js"></script> -->
+			<p id="js-embed-pen" data-dummy-pen data-height="700" data-theme-id="0" data-slug-hash="yNyaEx" data-default-tab="result" data-user="chinchang">See the Pen <a href='http://codepen.io/chinchang/pen/yNyaEx/'>yNyaEx</a> by Kushagra Gour (<a href='http://codepen.io/chinchang'>@chinchang</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 
 		</div>
@@ -209,10 +243,10 @@
 			</ul>
 		</div>
 
-
-
+		<script src="cta.min.js"></script>
 		<script src="script.js"></script>
 
+		<!-- // <script async src="//assets.codepen.io/assets/embed/ei.js"></script> -->
 	</body>
 
 
