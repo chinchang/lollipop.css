@@ -1,8 +1,6 @@
 var docs = [
-	{ name: 'Menu animation', slug: 'chinchang/pen/yNyaEx/' },
-	{ name: 'Home navigation', slug: 'chinchang/pen/yNyaEx/' },
-	{ name: 'Something blah', slug: 'chinchang/pen/yNyaEx/' },
-	{ name: 'Hello', slug: 'chinchang/pen/yNyaEx/' }
+	{ title: 'Menu animation', slug: 'chinchang/pen/yNyaEx/' },
+	{ title: 'Menu animation', slug: 'chinchang/pen/yNyaEx/' }
 ];
 var docBaseUrl = '://codepen.io/';
 
@@ -21,6 +19,10 @@ window.addEventListener('keyup', function (e) {
 });
 
 ui = {};
+ui.itemContainerEl = document.querySelector('#js-item-container');
+ui.embedIframeContainerEl = document.querySelector('#js-item-container > div');
+ui.embedPenEl = document.querySelector('#js-embed-pen');
+
 ui.populateList = function populateList() {
 	var html = docs.map(function mapCallback(doc) {
 		return '<li class="doc"><a href="' + doc.slug + '" onclic="openDoc(event)">' + doc.name + '</a></li>';
@@ -35,10 +37,32 @@ ui.populateList = function populateList() {
 
 };
 
-ui.openDoc = function openDoc(e) {
-	history.pushState(null, null, e.target.href);
+function fetchCodepenScript() {
+	var script = document.createElement('script');
+	script.src = '//assets.codepen.io/assets/embed/ei.js';
+	document.head.appendChild(script);
+}
+
+ui.openItem = function openItem(e) {
+	var slug = e.currentTarget.getAttribute('href');
+	var clone = ui.embedPenEl.cloneNode();
+	clone.removeAttribute('data-dummy-pen');
+	clone.setAttribute('class', 'codepen');
+
+	ui.embedIframeContainerEl.innerHTML = '';
+	ui.embedIframeContainerEl.appendChild(clone);
+	CodePenEmbed.init();
+	document.body.classList.add('item-state');
 	e.preventDefault();
+};
+
+ui.closeItem = function closeItem(e) {
+	document.body.classList.remove('item-state');
 };
 
 
 ui.populateList();
+// Prefetch codepen embed script
+setTimeout(function () {
+	fetchCodepenScript();
+}, 500);
