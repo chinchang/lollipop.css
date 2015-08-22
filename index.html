@@ -185,8 +185,18 @@
 				padding: 32px;
 				padding-top: 48px;
 				background: #40869A;
+				text-align: center;
 				transform: translateX(100%);
 				transition: 0.35s ease 0.1s;
+			}
+			.item-container__close-btn {
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				color: #FFF;
+				display: inline-block;
+				background-color: rgba(0,0,0,0.1);
+				padding: 12px;
+				width: 100%;
 			}
 			.item-state .item-container {
 				transform: translateX(0);
@@ -261,11 +271,10 @@
 				</div>
 			</div>
 
-			<div class="item-container" id="js-item-container" onclck="ui.closeItem()">
-
+			<div class="item-container" id="js-item-container">
+				<a href="javascript:void(0)" class="item-container__close-btn" onclick="ui.closeItem()">Close</a>
+				<div></div>
 			</div>
-
-
 
 			<p id="js-embed-pen" data-dummy-pen data-height="700" data-theme-id="0" data-slug-hash="yNyaEx" data-default-tab="result" data-user="chinchang">See the Pen <a href='http://codepen.io/chinchang/pen/yNyaEx/'>yNyaEx</a> by Kushagra Gour (<a href='http://codepen.io/chinchang'>@chinchang</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
@@ -277,10 +286,7 @@
 			</ul>
 		</div>
 
-		<script src="cta.min.js"></script>
 		<script src="script.js"></script>
-
-		<!-- // <script async src="//assets.codepen.io/assets/embed/ei.js"></script> -->
 	</body>
 
 

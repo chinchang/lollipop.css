@@ -20,6 +20,7 @@ window.addEventListener('keyup', function (e) {
 
 ui = {};
 ui.itemContainerEl = document.querySelector('#js-item-container');
+ui.embedIframeContainerEl = document.querySelector('#js-item-container > div');
 ui.embedPenEl = document.querySelector('#js-embed-pen');
 
 ui.populateList = function populateList() {
@@ -48,21 +49,14 @@ ui.openItem = function openItem(e) {
 	clone.removeAttribute('data-dummy-pen');
 	clone.setAttribute('class', 'codepen');
 
-	ui.itemContainerEl.innerHTML = '';
-	ui.itemContainerEl.appendChild(clone);
+	ui.embedIframeContainerEl.innerHTML = '';
+	ui.embedIframeContainerEl.appendChild(clone);
 	CodePenEmbed.init();
-	ui.reverseAnimate = cta(e.currentTarget, ui.itemContainerEl, function () {
-		document.body.classList.add('item-state');
-	});
-
+	document.body.classList.add('item-state');
 	e.preventDefault();
 };
 
 ui.closeItem = function closeItem(e) {
-	if (ui.reverseAnimate) {
-		// ui.reverseAnimate();
-		// ui.reverseAnimate = null;
-	}
 	document.body.classList.remove('item-state');
 };
 
