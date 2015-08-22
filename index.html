@@ -9,7 +9,7 @@
 		<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
 		<!-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
 		<!-- <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,900' rel='stylesheet' type='text/css'> -->
-		<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'> -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
 		<style>
 			*, *:after, *:before {
 				box-sizing: border-box;
@@ -51,6 +51,7 @@
 				margin-left: 400px;
 				position: relative;
 				min-height: 100%;
+				overflow: hidden;
 				transition: 0.25s ease 0.1s;
 			}
 			header {
@@ -64,7 +65,10 @@
 				width: 100%;
 				padding: 32px;
 				color: #AAA;
-				/*background: #EEE;*/
+				font-size: 0.8em;
+				letter-spacing: 4px;
+				word-spacing: 4px;
+				text-transform: uppercase;
 				text-align: center;
 			}
 			.main-title {
@@ -112,9 +116,11 @@
 				color: white;
 				width: 6em;
 				height: 6em;
+				margin: 1em 0 2em;
 				line-height: 6em;
 				font-size: 3em;
 				box-shadow: 0 13px 24px -7px rgba(0, 0, 0, 0.3);
+				cursor: pointer;
 			}
 			.lollipop-icon:after {
 				content: '';
@@ -177,6 +183,7 @@
 				right: 0;
 				bottom: 0;
 				padding: 32px;
+				padding-top: 48px;
 				background: #40869A;
 				transform: translateX(100%);
 				transition: 0.35s ease 0.1s;
@@ -186,13 +193,40 @@
 				visibility: visible;
 			}
 			[data-dummy-pen] { display: none; }
+			.item-container iframe {
+				opacity: 0;
+				animation: fadeIn 0.3s ease forwards 1s;
+
+			}
+			@-webkit-keyframes fadeIn {
+				from { opacity: 0; transform: scale(0.7); }
+				to { opacity: 1; transform: scale(1); }
+			}
+			@media (max-width: 1000px) {
+				.sidebar {
+					position: relative;
+					width: auto;
+					z-index: 1;
+					overflow: hidden;
+				}
+				.lollipop-icon {
+					margin: 1em 0;
+				}
+				.share-box { margin: 0; }
+				.sidebar__footer { position: static; padding: 16px; }
+				.outer-wrap {
+					margin-left: 0;
+					min-height: auto;
+				}
+				/*.item-container { position: fixed; z-index: 2; }*/
+			}
 		</style>
 
 	</head>
 
 	<body>
 		<div class="sidebar">
-			<div class="lollipop-icon" style="margin:1em 0 2em;">lollipop.css</div>
+			<div class="lollipop-icon">lollipop.css</div>
 			<h1 class="caps">Android lollipop animations <br>recreated in CSS</h1>
 
 
