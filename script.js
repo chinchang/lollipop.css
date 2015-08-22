@@ -2,40 +2,11 @@ var docs = [
 	{ title: 'Menu animation', slug: 'chinchang/pen/yNyaEx/' },
 	{ title: 'Menu animation', slug: 'chinchang/pen/yNyaEx/' }
 ];
-var docBaseUrl = '://codepen.io/';
-
-// DOM Elements
-var menuBtn = document.querySelector('#js-menu-btn'),
-	docsList = document.querySelector('#js-docs');
-
-// docs.push
-function toggleMenu() {
-	document.body.classList.toggle('is-sidebar-open');
-}
-window.addEventListener('keyup', function (e) {
-	if (e.which === 27) {
-		toggleMenu();
-	}
-});
 
 ui = {};
 ui.itemContainerEl = document.querySelector('#js-item-container');
 ui.embedIframeContainerEl = document.querySelector('#js-item-container > div');
 ui.embedPenEl = document.querySelector('#js-embed-pen');
-
-ui.populateList = function populateList() {
-	var html = docs.map(function mapCallback(doc) {
-		return '<li class="doc"><a href="' + doc.slug + '" onclic="openDoc(event)">' + doc.name + '</a></li>';
-	}).join('');
-	docsList.innerHTML = html;
-
-	var anchors = document.querySelectorAll('.doc a'), anchor;
-    for (var i = 0; i < anchors.length; i++) {
-        anchor = anchors[i];
-        anchor.addEventListener('click', ui.openDoc);
-    }
-
-};
 
 function fetchCodepenScript() {
 	var script = document.createElement('script');
@@ -60,8 +31,12 @@ ui.closeItem = function closeItem(e) {
 	document.body.classList.remove('item-state');
 };
 
+window.addEventListener('keyup', function (e) {
+	if (e.which === 27) {
+		ui.closeItem();
+	}
+});
 
-ui.populateList();
 // Prefetch codepen embed script
 setTimeout(function () {
 	fetchCodepenScript();
