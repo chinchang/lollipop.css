@@ -11,8 +11,8 @@ Contributing
 
 Community contributions are most welcome to this project. To submit a lollipop animation, do the following:
 
-1. Fork the base pen on Codepen
-2. Code up your animation. Make sure that is an animation used in Android Lollipop OS.
+1. Fork the [base template pen](http://codepen.io/chinchang/pen/eNdaQE) on Codepen
+2. Code up your animation. Make sure that is an animation used in Android Lollipop OS
 3. Submit a PR on this repo mentioning your pen link and short description on your animation
 
 If your submission meets the quality standards, it will be added to the website.
