@@ -44,7 +44,7 @@
 				overflow: hidden;
 				box-shadow: 2px 0 40px 2px rgba(0,0,0,0.1);
 			}
-			.sidebar:after {
+			.sidebar:after, .android {
 				content: '';
 				display: block;
 				width: 100%;
@@ -58,6 +58,16 @@
 				transform: rotate(10deg);
 				z-index: -3;
 			}
+			.android {
+				position: fixed;
+				right: -60px;
+				width: 450px;
+				bottom: -180px;
+				opacity: 0.09;
+				transform: translateY(350px);
+				transition: 0.3s ease;
+			}
+			.sidebar:hover + .android { transform: translateY(0); }
 			.outer-wrap {
 				padding: 32px;
 				margin-left: 400px;
@@ -98,27 +108,6 @@
 				letter-spacing: 6px;
 				color: inherit;
 				font-weight: bold;
-			}
-			.drawer {
-				position: fixed;
-				top: 0;
-				bottom: 0;
-				right: 0;
-				width: 400px;
-				background: #444;
-				transform: translateX(100%);
-				transition: 0.2s ease-out;
-			}
-			.doc > a {
-				color: #aaa;
-			}
-			.is-sidebar-open .drawer {
-				transform: translateX(0);
-			}
-			.is-sidebar-open .outer-wrap {
-				opacity: 0.6;
-				transform: translateX(-200px);
-				pointer-event: none;
 			}
 			.share-box {
 				margin-bottom: 32px;
@@ -268,7 +257,6 @@
 			<div class="lollipop-icon">lollipop.css</div>
 			<h1 class="caps" style="padding:0 16px;">Android lollipop animations <br>in CSS</h1>
 
-
 			<footer class="sidebar__footer">
 				<div class="share-box">
 					<a class="tweet-btn" target="_blank" href="https://twitter.com/share?url=https%3A%2F%2Fkushagragour.in/lab/lollipop.css%2F&text=lollipop.css%20-%20Android%20lollipop%20animations%20in%20CSS%20via%20@chinchang457">
@@ -279,8 +267,9 @@
 				</div>
 				Created by <a target="blank" href="https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fdev.twitter.com%2Fweb%2Ffollow-button&screen_name=chinchang457&tw_p=followbutton">Kushagra Gour</a>
 			</footer>
-
 		</div>
+		<div class="android"></div>
+
 		<div class="outer-wrap">
 
 			<div class="item-list">
@@ -288,15 +277,11 @@
 					<div class="list-item__title">Main menu</div>
 					<span class="list-item__date">25 July 2015</span>
 				</a>
-				<a class="list-item" onclick="ui.openItem(event)" href="chinchang/pen/yNyaEx/">
-					<div class="list-item__title">Dialpad</div>
-					<span class="list-item__date">5 Dec 2015</span>
-				</a>
 				<div class="list-item">
 					More coming soon...
 				</div>
 			</div>
-			<a href="" class="sidebar-btn">Submit an animation</a>
+			<a href="https://github.com/chinchang/lollipop.css#contributing" target="_blank" class="sidebar-btn">Submit an animation</a>
 
 			<div class="item-container" id="js-item-container">
 				<a href="javascript:void(0)" class="sidebar-btn  item-container__close-btn" onclick="ui.closeItem()">Close</a>
