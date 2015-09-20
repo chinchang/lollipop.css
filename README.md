@@ -28,3 +28,4 @@ Credits
 
 - [Codepen](https://codepen.io) for a great playground
 - Android Lollipop - for its neat Material design animations
+- [materialdesignicons.com](https://materialdesignicons.com/) for free icons

@@ -1,8 +1,3 @@
-var docs = [
-	{ title: 'Menu animation', slug: 'chinchang/pen/yNyaEx/' },
-	{ title: 'Menu animation', slug: 'chinchang/pen/yNyaEx/' }
-];
-
 ui = {};
 ui.itemContainerEl = document.querySelector('#js-item-container');
 ui.embedIframeContainerEl = document.querySelector('#js-item-container > div');
