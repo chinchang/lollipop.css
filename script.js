@@ -14,6 +14,7 @@ ui.openItem = function openItem(e) {
 	var clone = ui.embedPenEl.cloneNode();
 	clone.removeAttribute('data-dummy-pen');
 	clone.setAttribute('class', 'codepen');
+	clone.setAttribute('data-slug-hash', slug.match(/([\w\d]+)\/$/)[1]);
 
 	ui.embedIframeContainerEl.innerHTML = '';
 	ui.embedIframeContainerEl.appendChild(clone);
