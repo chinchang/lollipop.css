@@ -6,6 +6,8 @@ lollipop.css
 **lollipop.css** is a project to implement the Android Lollipop OS animations in CSS. This project is for educational purposes and also for fun getting to implement things in CSS!
 
 
+![lollipop.css logo](logo.png)
+
 Contributing
 -----
 
