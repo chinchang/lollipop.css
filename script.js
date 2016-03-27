@@ -18,7 +18,7 @@ ui.openItem = function openItem(e) {
 
 	ui.embedIframeContainerEl.innerHTML = '';
 	ui.embedIframeContainerEl.appendChild(clone);
-	CodePenEmbed.init();
+	new __CPEmbed();
 	document.body.classList.add('item-state');
 	e.preventDefault();
 };
